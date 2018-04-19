@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleComponent } from '../article/article.component';
 
 @Component({
   selector: 'app-editor',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./editor.component.css']
 })
 export class EditorComponent implements OnInit {
+
+  public EditedArticle:string;
 
   constructor() { }
 
