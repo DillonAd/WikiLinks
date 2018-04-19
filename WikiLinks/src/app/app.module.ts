@@ -5,13 +5,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ArticleComponent } from './article/article.component';
+import { EditorComponent } from './editor/editor.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    ArticleComponent
+    ArticleComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule

@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleComponent implements OnInit {
 
+  public title:string;
+  public content:string;
+  public lastModifiedBy:string;
+  public lastModifiedDate:Date;
+
   constructor() { }
 
   ngOnInit() {
