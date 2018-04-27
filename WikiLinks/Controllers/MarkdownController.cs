@@ -12,7 +12,7 @@ namespace WikiLinks.Controllers
         public string ParseMarkdown(string markdown)
         {
             var html = string.Empty;
-            
+            return html;   
         }
     }
 }
