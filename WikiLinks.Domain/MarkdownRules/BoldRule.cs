@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace WikiLinks.Domain.MarkdownRules
 {
     public class BoldRule : MarkdownRule, IMarkdownRule

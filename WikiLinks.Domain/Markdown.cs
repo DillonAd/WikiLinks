@@ -18,7 +18,7 @@ namespace WikiLinks.Domain
 
             foreach(var rule in _Rules)
             {
-                parsedContent = rule.ParseRule(parsedContent);
+                parsedContent = rule.Parse(parsedContent);
             }
 
             return parsedContent;

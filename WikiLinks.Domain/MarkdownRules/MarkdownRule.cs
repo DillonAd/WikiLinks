@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace WikiLinks.Domain.MarkdownRules
@@ -23,7 +19,7 @@ namespace WikiLinks.Domain.MarkdownRules
             _EscapedMarkdownTag = Regex.Escape(MarkdownTag);
         }
 
-        public string ParseRule(string content)
+        public string Parse(string content)
         {
             string inProgressContent;
             string newContent = content;
