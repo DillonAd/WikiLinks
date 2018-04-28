@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-
 namespace WikiLinks.Domain.MarkdownRules
 {
     public abstract class MarkdownRule
@@ -19,8 +13,6 @@ namespace WikiLinks.Domain.MarkdownRules
             MarkdownTag = markdownTag;
             HtmlBeginTag = htmlBeginTag;
             HtmlEndTag = htmlEndTag;
-
-            _EscapedMarkdownTag = Regex.Escape(MarkdownTag);
         }
 
         public string Parse(string content)
@@ -42,15 +34,18 @@ namespace WikiLinks.Domain.MarkdownRules
         private bool HasMatchingTags(string content)
         {
             var beginTagIndex = content.IndexOf(MarkdownTag);
+            var nextSearchIndex = beginTagIndex + 1 <= content.Length ? beginTagIndex + 1 : beginTagIndex;
 
-            if (beginTagIndex < 0 || !content.Substring(beginTagIndex).Contains(MarkdownTag))
+            if (beginTagIndex < 0 || nextSearchIndex == beginTagIndex)
             {
                 return false;
             }
 
-            var endtagIndex = content.IndexOf(MarkdownTag, beginTagIndex);
+            var endTagIndex = content.IndexOf(MarkdownTag, nextSearchIndex);
 
-            return beginTagIndex >= 0 && beginTagIndex >= 0;
+            return beginTagIndex >= 0
+                    && endTagIndex >= 0
+                    && beginTagIndex != endTagIndex;
         }
 
         private string ReplaceTag(string content, string replacementTag)

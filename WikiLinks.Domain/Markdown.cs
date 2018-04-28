@@ -7,13 +7,16 @@ namespace WikiLinks.Domain
     {
         private List<IMarkdownRule> _Rules;
 
-        public Markdown()
+        public Markdown(List<IMarkdownRule> rules)
         {
-            _Rules = new List<IMarkdownRule>();
+            _Rules = rules;
         }
 
         public string Parse(string content)
         {
+            if (string.IsNullOrWhiteSpace(content))
+                return string.Empty;
+
             string parsedContent = content;
 
             foreach(var rule in _Rules)

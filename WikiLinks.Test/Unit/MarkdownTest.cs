@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using WikiLinks.Domain;
 using WikiLinks.Domain.MarkdownRules;
 using Xunit;
 
@@ -75,6 +77,43 @@ namespace WikiLinks.Test.Unit
             var hr = new Header6Rule();
             var result = hr.Parse(initial);
             Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("**hello world")]
+        [InlineData("hello _world")]
+        [InlineData("hello world ######")]
+        [InlineData("###### ")]
+        public void Parse_UnmatchedTags(string inital)
+        {
+            var rules = GetRules();
+            var md = new Markdown(rules);
+            var result = md.Parse(inital);
+
+            Assert.Equal(inital, result);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("  ")]
+        [InlineData(null)]
+        public void Parse_NullOrWhiteSpace(string initial)
+        {
+            var rules = GetRules();
+            var md = new Markdown(rules);
+            var result = md.Parse(initial);
+
+            Assert.Empty(result);
+        }
+
+        private List<IMarkdownRule> GetRules()
+        {
+            return new List<IMarkdownRule>()
+            {
+                new BoldRule(),
+                new ItalicRule(),
+                new Header6Rule()
+            };
         }
     }
 }
