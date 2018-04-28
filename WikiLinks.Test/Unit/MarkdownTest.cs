@@ -18,6 +18,18 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [InlineData("**hello** **world**", "<b>hello</b> <b>world</b>")]
+        [InlineData("**hello ** **world **", "<b>hello </b> <b>world </b>")]
+        [InlineData("** hello** ** world**", "<b> hello</b> <b> world</b>")]
+        [InlineData("** hello ** ** world **", "<b> hello </b> <b> world </b>")]
+        public void ParseBold_Multiple(string initial, string expected)
+        {
+            var br = new BoldRule();
+            var result = br.Parse(initial);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
         [InlineData("hello _world_", "hello <i>world</i>")]
         [InlineData("hello _world _", "hello <i>world </i>")]
         [InlineData("hello _ world_", "hello <i> world</i>")]
