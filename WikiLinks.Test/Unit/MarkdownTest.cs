@@ -34,7 +34,19 @@ namespace WikiLinks.Test.Unit
         [InlineData("hello _world _", "hello <i>world </i>")]
         [InlineData("hello _ world_", "hello <i> world</i>")]
         [InlineData("hello _ world _", "hello <i> world </i>")]
-        public void ParseItalic(string initial, string expected)
+        public void ParseItalic_Single(string initial, string expected)
+        {
+            var ir = new ItalicRule();
+            var result = ir.Parse(initial);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("_hello_ _world_", "<i>hello</i> <i>world</i>")]
+        [InlineData("_hello _ _world _", "<i>hello </i> <i>world </i>")]
+        [InlineData("_ hello_ _ world_", "<i> hello</i> <i> world</i>")]
+        [InlineData("_ hello _ _ world _", "<i> hello </i> <i> world </i>")]
+        public void ParseItalic_Multiple(string initial, string expected)
         {
             var ir = new ItalicRule();
             var result = ir.Parse(initial);
