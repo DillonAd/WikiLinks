@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace WikiLinks.Domain.MarkdownRules
@@ -46,7 +50,7 @@ namespace WikiLinks.Domain.MarkdownRules
 
             var endtagIndex = content.IndexOf(MarkdownTag, beginTagIndex);
 
-            return beginTagIndex > 0 && beginTagIndex > 0;
+            return beginTagIndex >= 0 && beginTagIndex >= 0;
         }
 
         private string ReplaceTag(string content, string replacementTag)
