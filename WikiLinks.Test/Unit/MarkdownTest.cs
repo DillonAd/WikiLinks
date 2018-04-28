@@ -28,5 +28,17 @@ namespace WikiLinks.Test.Unit
             var result = ir.Parse(initial);
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [InlineData("hello ######world######", "hello <h6>world</h6>")]
+        [InlineData("hello ######world ######", "hello <h6>world </h6>")]
+        [InlineData("hello ###### world######", "hello <h6> world</h6>")]
+        [InlineData("hello ###### world ######", "hello <h6> world </h6>")]
+        public void ParseHeader6(string initial, string expected)
+        {
+            var hr = new Header6Rule();
+            var result = hr.Parse(initial);
+            Assert.Equal(expected, result);
+        }
     }
 }
