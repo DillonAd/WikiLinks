@@ -58,7 +58,19 @@ namespace WikiLinks.Test.Unit
         [InlineData("hello ######world ######", "hello <h6>world </h6>")]
         [InlineData("hello ###### world######", "hello <h6> world</h6>")]
         [InlineData("hello ###### world ######", "hello <h6> world </h6>")]
-        public void ParseHeader6(string initial, string expected)
+        public void ParseHeader6_Single(string initial, string expected)
+        {
+            var hr = new Header6Rule();
+            var result = hr.Parse(initial);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("######hello###### ######world######", "<h6>hello</h6> <h6>world</h6>")]
+        [InlineData("######hello ###### ######world ######", "<h6>hello </h6> <h6>world </h6>")]
+        [InlineData("###### hello###### ###### world######", "<h6> hello</h6> <h6> world</h6>")]
+        [InlineData("###### hello ###### ###### world ######", "<h6> hello </h6> <h6> world </h6>")]
+        public void ParseHeader6_Multiple(string initial, string expected)
         {
             var hr = new Header6Rule();
             var result = hr.Parse(initial);
