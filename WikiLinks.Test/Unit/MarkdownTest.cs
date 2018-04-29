@@ -80,6 +80,18 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [InlineData("#####hello##### world", "<h5>hello</h5> world")]
+        [InlineData("#####hello ##### world", "<h5>hello </h5> world")]
+        [InlineData("##### hello##### world", "<h5> hello</h5> world")]
+        [InlineData("##### hello ##### world", "<h5> hello </h5> world")]
+        public void ParseHeader5(string initial, string expected)
+        {
+            var hr = new Header5Rule();
+            var result = hr.Parse(initial);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
         [InlineData("**hello world")]
         [InlineData("hello _world")]
         [InlineData("hello world ######")]
