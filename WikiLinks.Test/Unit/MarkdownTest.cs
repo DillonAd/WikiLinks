@@ -116,6 +116,18 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [InlineData("##hello## world", "<h2>hello</h2> world")]
+        [InlineData("##hello ## world", "<h2>hello </h2> world")]
+        [InlineData("## hello## world", "<h2> hello</h2> world")]
+        [InlineData("## hello ## world", "<h2> hello </h2> world")]
+        public void ParseHeader2(string initial, string expected)
+        {
+            var hr = new Header2Rule();
+            var result = hr.Parse(initial);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
         [InlineData("**hello world")]
         [InlineData("hello _world")]
         [InlineData("hello world ######")]
