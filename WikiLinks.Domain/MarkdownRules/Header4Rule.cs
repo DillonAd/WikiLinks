@@ -1,0 +1,11 @@
+namespace WikiLinks.Domain.MarkdownRules
+{
+    public class Header4Rule : MarkdownRule, IMarkdownRule
+    {
+        private const string _MarkdownTag = "####";
+        private const string _HtmlBeginTag = "<h4>";
+        private const string _HtmlEndTag = "</h4>";
+
+        public Header4Rule() : base(_MarkdownTag, _HtmlBeginTag, _HtmlEndTag) { }
+    }
+}
