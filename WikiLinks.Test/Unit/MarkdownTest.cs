@@ -172,7 +172,13 @@ namespace WikiLinks.Test.Unit
             {
                 new BoldRule(),
                 new ItalicRule(),
-                new Header6Rule()
+                new Header6Rule(),
+                new Header5Rule(),
+                new Header4Rule(),
+                new Header3Rule(),
+                new Header2Rule(),
+                new Header1Rule()
+                
             };
         }
     }
