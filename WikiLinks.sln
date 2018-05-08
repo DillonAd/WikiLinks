@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiLinks", "WikiLinks\WikiLinks.csproj", "{3268766C-674B-4491-A45F-114B090697F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiLinks.Api", "WikiLinks\WikiLinks.Api.csproj", "{3268766C-674B-4491-A45F-114B090697F8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiLinks.Domain", "WikiLinks.Domain\WikiLinks.Domain.csproj", "{ED749616-646D-4540-8C6D-B48A0C5F2A88}"
 EndProject
