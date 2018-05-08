@@ -1,0 +1,9 @@
+services: 
+  web:
+    build: ./WikiLinks/
+    ports:
+      - "4200:4200"
+  api:
+    build: ./WikiLinks.Api/
+    ports:
+      - "5000:5000"
