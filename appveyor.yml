@@ -1,0 +1,20 @@
+image: Visual Studio 2017
+version: '1.0.0.{build}'
+clone_depth: 1
+
+before_build:
+  - cmd: dotnet restore ./WikiLinks.Api/WikiLinks.Api.csproj
+
+build_script:
+  - cmd: dotnet publish ./WikiLinks.Api/WikiLinks.Api.csproj --configuration release --self-contained --runtime linux-x64 --output ./out
+
+artifacts:
+  - path: ./out
+    name: api
+    type: WebDeployPackage
+
+
+test_script:
+ - cmd: dotnet test ./WikiLinks.Test/WikiLinks.Test.csproj
+
+ deploy: off
