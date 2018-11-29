@@ -23,37 +23,27 @@ namespace WikiLinks.Domain.MarkdownRules
             RequireSpace = requireSpace;
         }
 
-        public string Parse(string content)
+        public string Parse(string line)
         {
-            var sb = new StringBuilder();
-            var lines = content.Split('\n');
+            var content = line;
 
-            var line = string.Empty;
-
-            for(int i = 0; i < lines.Length; i++)
+            if(TagStyle == TagStyle.Matching || TagStyle == TagStyle.Both)
             {
-                line = lines[i];
-                if(TagStyle == TagStyle.Matching || TagStyle == TagStyle.Both)
+                while (HasMatchingTags(ref content))
                 {
-                    while (HasMatchingTags(ref line))
-                    {
-                        line = ReplaceTag(line, HtmlBeginTag, HtmlEndTag, MarkdownTag);
-                    }
+                    content = ReplaceTag(content, HtmlBeginTag, HtmlEndTag, MarkdownTag);
                 }
-
-                if(TagStyle == TagStyle.Single || TagStyle == TagStyle.Both)
-                {
-                    if(line.TrimStart().StartsWith(MarkdownTag))
-                    {
-                        line = ReplaceTag(line, HtmlBeginTag, HtmlEndTag, MarkdownTag);
-                    }
-                }
-
-                sb.Append(line)
-                  .Append(Environment.NewLine);
             }
 
-            return sb.ToString();
+            if(TagStyle == TagStyle.Single || TagStyle == TagStyle.Both)
+            {
+                if(content.TrimStart().StartsWith(MarkdownTag))
+                {
+                    content = ReplaceTag(content, HtmlBeginTag, HtmlEndTag, MarkdownTag);
+                }
+            }
+        
+            return content;
         }
 
         private bool HasMatchingTags(ref string content)

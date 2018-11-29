@@ -9,10 +9,10 @@ namespace WikiLinks.Test.Unit
     public class MarkdownTest
     {
         [Theory]
-        [InlineData("hello **world**", "hello <b>world</b>\n")]
-        [InlineData("hello **world **", "hello <b>world </b>\n")]
-        [InlineData("hello ** world**", "hello <b> world</b>\n")]
-        [InlineData("hello ** world **", "hello <b> world </b>\n")]
+        [InlineData("hello **world**", "hello <b>world</b>")]
+        [InlineData("hello **world **", "hello <b>world </b>")]
+        [InlineData("hello ** world**", "hello <b> world</b>")]
+        [InlineData("hello ** world **", "hello <b> world </b>")]
         public void ParseBold_Single(string initial, string expected)
         {
             var br = new BoldRule();
@@ -21,10 +21,10 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
-        [InlineData("**hello** **world**", "<b>hello</b> <b>world</b>\n")]
-        [InlineData("**hello ** **world **", "<b>hello </b> <b>world </b>\n")]
-        [InlineData("** hello** ** world**", "<b> hello</b> <b> world</b>\n")]
-        [InlineData("** hello ** ** world **", "<b> hello </b> <b> world </b>\n")]
+        [InlineData("**hello** **world**", "<b>hello</b> <b>world</b>")]
+        [InlineData("**hello ** **world **", "<b>hello </b> <b>world </b>")]
+        [InlineData("** hello** ** world**", "<b> hello</b> <b> world</b>")]
+        [InlineData("** hello ** ** world **", "<b> hello </b> <b> world </b>")]
         public void ParseBold_Multiple(string initial, string expected)
         {
             var br = new BoldRule();
@@ -33,10 +33,10 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
-        [InlineData("hello _world_", "hello <i>world</i>\n")]
-        [InlineData("hello _world _", "hello <i>world </i>\n")]
-        [InlineData("hello _ world_", "hello <i> world</i>\n")]
-        [InlineData("hello _ world _", "hello <i> world </i>\n")]
+        [InlineData("hello _world_", "hello <i>world</i>")]
+        [InlineData("hello _world _", "hello <i>world </i>")]
+        [InlineData("hello _ world_", "hello <i> world</i>")]
+        [InlineData("hello _ world _", "hello <i> world </i>")]
         public void ParseItalic_Single(string initial, string expected)
         {
             var ir = new ItalicRule();
@@ -45,10 +45,10 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
-        [InlineData("_hello_ _world_", "<i>hello</i> <i>world</i>\n")]
-        [InlineData("_hello _ _world _", "<i>hello </i> <i>world </i>\n")]
-        [InlineData("_ hello_ _ world_", "<i> hello</i> <i> world</i>\n")]
-        [InlineData("_ hello _ _ world _", "<i> hello </i> <i> world </i>\n")]
+        [InlineData("_hello_ _world_", "<i>hello</i> <i>world</i>")]
+        [InlineData("_hello _ _world _", "<i>hello </i> <i>world </i>")]
+        [InlineData("_ hello_ _ world_", "<i> hello</i> <i> world</i>")]
+        [InlineData("_ hello _ _ world _", "<i> hello </i> <i> world </i>")]
         public void ParseItalic_Multiple(string initial, string expected)
         {
             var ir = new ItalicRule();
@@ -57,9 +57,9 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
-        [InlineData("###### hello ###### world", "<h6>hello</h6> world\n")]
-        [InlineData("###### hello world", "<h6>hello world</h6>\n")]
-        [InlineData(" ###### hello world", " <h6>hello world</h6>\n")]
+        [InlineData("###### hello ###### world", "<h6>hello</h6> world")]
+        [InlineData("###### hello world", "<h6>hello world</h6>")]
+        [InlineData(" ###### hello world", " <h6>hello world</h6>")]
         public void ParseHeader6(string initial, string expected)
         {
             var hr = new Header6Rule();
@@ -68,9 +68,9 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
-        [InlineData("##### hello ##### world", "<h5>hello</h5> world\n")]
-        [InlineData("##### hello world", "<h5>hello world</h5>\n")]
-        [InlineData(" ##### hello world", " <h5>hello world</h5>\n")]
+        [InlineData("##### hello ##### world", "<h5>hello</h5> world")]
+        [InlineData("##### hello world", "<h5>hello world</h5>")]
+        [InlineData(" ##### hello world", " <h5>hello world</h5>")]
         public void ParseHeader5(string initial, string expected)
         {
             var hr = new Header5Rule();
@@ -79,9 +79,9 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
-        [InlineData("#### hello #### world", "<h4>hello</h4> world\n")]
-        [InlineData("#### hello world", "<h4>hello world</h4>\n")]
-        [InlineData(" #### hello world", " <h4>hello world</h4>\n")]
+        [InlineData("#### hello #### world", "<h4>hello</h4> world")]
+        [InlineData("#### hello world", "<h4>hello world</h4>")]
+        [InlineData(" #### hello world", " <h4>hello world</h4>")]
         public void ParseHeader4(string initial, string expected)
         {
             var hr = new Header4Rule();
@@ -90,9 +90,9 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
-        [InlineData("### hello ### world", "<h3>hello</h3> world\n")]
-        [InlineData("### hello world", "<h3>hello world</h3>\n")]
-        [InlineData(" ### hello world", " <h3>hello world</h3>\n")]
+        [InlineData("### hello ### world", "<h3>hello</h3> world")]
+        [InlineData("### hello world", "<h3>hello world</h3>")]
+        [InlineData(" ### hello world", " <h3>hello world</h3>")]
         public void ParseHeader3(string initial, string expected)
         {
             var hr = new Header3Rule();
@@ -101,9 +101,9 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
-        [InlineData("## hello ## world", "<h2>hello</h2> world\n")]
-        [InlineData("## hello world", "<h2>hello world</h2>\n")]
-        [InlineData(" ## hello world", " <h2>hello world</h2>\n")]
+        [InlineData("## hello ## world", "<h2>hello</h2> world")]
+        [InlineData("## hello world", "<h2>hello world</h2>")]
+        [InlineData(" ## hello world", " <h2>hello world</h2>")]
         public void ParseHeader2(string initial, string expected)
         {
             var hr = new Header2Rule();
@@ -112,9 +112,9 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
-        [InlineData("# hello # world", "<h1>hello</h1> world\n")]
-        [InlineData("# hello world", "<h1>hello world</h1>\n")]
-        [InlineData(" # hello world", " <h1>hello world</h1>\n")]
+        [InlineData("# hello # world", "<h1>hello</h1> world")]
+        [InlineData("# hello world", "<h1>hello world</h1>")]
+        [InlineData(" # hello world", " <h1>hello world</h1>")]
         public void ParseHeader1(string initial, string expected)
         {
             var hr = new Header1Rule();
@@ -122,7 +122,7 @@ namespace WikiLinks.Test.Unit
             Assert.Equal(expected, result);
         }
 
-        [Theory(Skip="Skipping until the algorithm can be refactored to not include a ridiculous amount of newlines")]
+        [Theory]
         [InlineData("**hello world")]
         [InlineData("hello _world")]
         public void Parse_UnmatchedTags(string inital)
@@ -131,7 +131,7 @@ namespace WikiLinks.Test.Unit
             var md = new Markdown(rules);
             var result = md.Parse(inital);
 
-            Assert.Equal(inital, result);
+            Assert.Equal(inital + Environment.NewLine, result);
         }
 
         [Theory]

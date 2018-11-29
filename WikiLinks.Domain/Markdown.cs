@@ -1,3 +1,5 @@
+using System;
+using System.Text;
 using System.Collections.Generic;
 using WikiLinks.Domain.MarkdownRules;
 
@@ -15,16 +17,27 @@ namespace WikiLinks.Domain
         public string Parse(string content)
         {
             if (string.IsNullOrWhiteSpace(content))
-                return string.Empty;
-
-            string parsedContent = content;
-
-            foreach(var rule in _Rules)
             {
-                parsedContent = rule.Parse(parsedContent);
+                return string.Empty;
             }
 
-            return parsedContent;
+            var sb = new StringBuilder();
+            var lines = content.Split('\n');
+
+            var line = string.Empty;
+
+            for(int i = 0; i < lines.Length; i++)
+            {
+                foreach(var rule in _Rules)
+                {
+                    line = rule.Parse(lines[i]);
+                }
+
+                sb.Append(line)
+                  .Append(Environment.NewLine);
+            }
+
+            return sb.ToString();
         }
     }
 }
