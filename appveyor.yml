@@ -11,18 +11,18 @@ install:
 
 before_build:
   - cmd: dotnet restore ./WikiLinks.Api/WikiLinks.Api.csproj
-  - cmd: npm install ./WikiLinks/
+  - cmd: pushd ./WikiLinks && npm install && popd
 
 build_script:
   - cmd: dotnet publish ./WikiLinks.Api/WikiLinks.Api.csproj --configuration release --self-contained --runtime linux-x64 --output ./api
-  - cmd: npm build ./WikiLinks/ --output-path ./front-end
+  - cmd: pushd ./WikiLinks && npm run-script build && popd
 
 artifacts:
   - path: ./api
     name: api
     type: WebDeployPackage
  
-  - path: ./front-end
+  - path: ./WikiLinks/dist/WikiLinks/
     name: front-end
     type: WebDeployPackage
 
