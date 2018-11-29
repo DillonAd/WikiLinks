@@ -2,19 +2,32 @@ image: Visual Studio 2017
 version: '1.0.0.{build}'
 clone_depth: 1
 
+environment:
+  - node_version: 11
+
+install: 
+  - ps: Install-Product node $env:node_version
+  - cmd: npm install -g @angular/cli
+
 before_build:
   - cmd: dotnet restore ./WikiLinks.Api/WikiLinks.Api.csproj
+  - cmd: npm install ./WikiLinks/
 
 build_script:
-  - cmd: dotnet publish ./WikiLinks.Api/WikiLinks.Api.csproj --configuration release --self-contained --runtime linux-x64 --output ./out
+  - cmd: dotnet publish ./WikiLinks.Api/WikiLinks.Api.csproj --configuration release --self-contained --runtime linux-x64 --output ./api
+  - cmd: npm build ./WikiLinks/ --output-path ./front-end
 
 artifacts:
-  - path: ./out
+  - path: ./api
     name: api
     type: WebDeployPackage
-
+ 
+  - path: ./front-end
+    name: front-end
+    type: WebDeployPackage
 
 test_script:
- - cmd: dotnet test ./WikiLinks.Test/WikiLinks.Test.csproj
-
+  - cmd: dotnet test ./WikiLinks.Test/WikiLinks.Test.csproj
+  - cmd: npm test
+  
  deploy: off
