@@ -29,5 +29,3 @@ artifacts:
 test_script:
   - cmd: dotnet test ./WikiLinks.Test/WikiLinks.Test.csproj
   - cmd: npm test
-  
- deploy: off
