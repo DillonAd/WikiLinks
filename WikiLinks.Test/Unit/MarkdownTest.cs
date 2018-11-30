@@ -159,7 +159,6 @@ namespace WikiLinks.Test.Unit
                 new Header3Rule(),
                 new Header2Rule(),
                 new Header1Rule()
-                
             };
         }
     }
