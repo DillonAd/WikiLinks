@@ -3,7 +3,7 @@ using System.Text;
 
 namespace WikiLinks.Domain.MarkdownRules
 {
-    public abstract class MarkdownRule
+    public abstract class MarkdownRule : IMarkdownRule
     {
         protected string MarkdownTag { get; }
         protected string HtmlBeginTag => _htmlBeginTag;
