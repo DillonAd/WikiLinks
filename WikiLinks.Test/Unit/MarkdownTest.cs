@@ -123,6 +123,19 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [InlineData("`hello` world", "<code><pre>hello</pre></code> world")]
+        [InlineData("`hello world`", "<code><pre>hello world</pre></code>")]
+        [InlineData("hello `world`", "hello <code><pre>world</pre></code>")]
+        [InlineData("` hello ` world", "<code><pre> hello </pre></code> world")]
+        [InlineData("`hello ` world", "<code><pre>hello </pre></code> world")]
+        public void ParseCodeLine(string initial, string expected)
+        {
+            var hr = new CodeRule();
+            var result = hr.Parse(initial);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
         [InlineData("**hello world")]
         [InlineData("hello _world")]
         public void Parse_UnmatchedTags(string inital)
@@ -158,7 +171,8 @@ namespace WikiLinks.Test.Unit
                 new Header4Rule(),
                 new Header3Rule(),
                 new Header2Rule(),
-                new Header1Rule()
+                new Header1Rule(),
+                new CodeRule()
             };
         }
     }
