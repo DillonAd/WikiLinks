@@ -1,6 +1,6 @@
 namespace WikiLinks.Domain.MarkdownRules
 {
-    public class Header3Rule : MarkdownRule, IMarkdownRule
+    public class Header3Rule : MarkdownRule
     {
         private const string _MarkdownTag = "###";
         private const string _HtmlBeginTag = "<h3>";

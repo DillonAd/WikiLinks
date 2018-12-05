@@ -1,6 +1,6 @@
 namespace WikiLinks.Domain.MarkdownRules
 {
-    public class Header1Rule : MarkdownRule, IMarkdownRule
+    public class Header1Rule : MarkdownRule
     {
         private const string _MarkdownTag = "#";
         private const string _HtmlBeginTag = "<h1>";

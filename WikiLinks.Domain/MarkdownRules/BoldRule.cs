@@ -1,6 +1,6 @@
 namespace WikiLinks.Domain.MarkdownRules
 {
-    public class BoldRule : MarkdownRule, IMarkdownRule
+    public class BoldRule : MarkdownRule
     {
         private const string _MarkdownTag = "**";
         private const string _HtmlBeginTag = "<b>";

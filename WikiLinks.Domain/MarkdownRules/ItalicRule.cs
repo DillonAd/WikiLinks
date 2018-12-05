@@ -1,6 +1,6 @@
 namespace WikiLinks.Domain.MarkdownRules
 {
-    public class ItalicRule : MarkdownRule, IMarkdownRule
+    public class ItalicRule : MarkdownRule
     {
         private const string _MarkdownTag = "_";
         private const string _HtmlBeginTag = "<i>";
