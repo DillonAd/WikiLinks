@@ -1,6 +1,6 @@
 namespace WikiLinks.Domain.MarkdownRules
 {
-    public class Header6Rule : MarkdownRule
+    public class Header6Rule : SingleLineMarkdownRule
     {
         private const string _MarkdownTag = "######";
         private const string _HtmlBeginTag = "<h6>";

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace WikiLinks.Domain.MarkdownRules
 {
-    public abstract class MarkdownRule : IMarkdownRule
+    public abstract class SingleLineMarkdownRule : IMarkdownRule
     {
         protected string MarkdownTag { get; }
         protected string HtmlBeginTag => _htmlBeginTag;
@@ -14,7 +14,7 @@ namespace WikiLinks.Domain.MarkdownRules
         private readonly string _htmlBeginTag;
         private readonly string _htmlEndTag;
 
-        protected internal MarkdownRule(string markdownTag, string htmlBeginTag, string htmlEndTag, TagStyle tagStyle = TagStyle.Matching, bool requireSpace = false)
+        protected internal SingleLineMarkdownRule(string markdownTag, string htmlBeginTag, string htmlEndTag, TagStyle tagStyle = TagStyle.Matching, bool requireSpace = false)
         {
             MarkdownTag = markdownTag;
             _htmlBeginTag = htmlBeginTag;
