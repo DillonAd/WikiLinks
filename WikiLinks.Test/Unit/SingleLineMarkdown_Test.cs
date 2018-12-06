@@ -6,9 +6,10 @@ using Xunit;
 
 namespace WikiLinks.Test.Unit
 {
-    public class MarkdownTest
+    public class SingleLineMarkdown_Test
     {
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("hello **world**", "hello <b>world</b>")]
         [InlineData("hello **world **", "hello <b>world </b>")]
         [InlineData("hello ** world**", "hello <b> world</b>")]
@@ -21,6 +22,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("**hello** **world**", "<b>hello</b> <b>world</b>")]
         [InlineData("**hello ** **world **", "<b>hello </b> <b>world </b>")]
         [InlineData("** hello** ** world**", "<b> hello</b> <b> world</b>")]
@@ -33,6 +35,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("hello _world_", "hello <i>world</i>")]
         [InlineData("hello _world _", "hello <i>world </i>")]
         [InlineData("hello _ world_", "hello <i> world</i>")]
@@ -45,6 +48,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("_hello_ _world_", "<i>hello</i> <i>world</i>")]
         [InlineData("_hello _ _world _", "<i>hello </i> <i>world </i>")]
         [InlineData("_ hello_ _ world_", "<i> hello</i> <i> world</i>")]
@@ -57,6 +61,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("###### hello ###### world", "<h6>hello</h6> world")]
         [InlineData("###### hello world", "<h6>hello world</h6>")]
         [InlineData(" ###### hello world", " <h6>hello world</h6>")]
@@ -68,6 +73,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("##### hello ##### world", "<h5>hello</h5> world")]
         [InlineData("##### hello world", "<h5>hello world</h5>")]
         [InlineData(" ##### hello world", " <h5>hello world</h5>")]
@@ -79,6 +85,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("#### hello #### world", "<h4>hello</h4> world")]
         [InlineData("#### hello world", "<h4>hello world</h4>")]
         [InlineData(" #### hello world", " <h4>hello world</h4>")]
@@ -90,6 +97,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("### hello ### world", "<h3>hello</h3> world")]
         [InlineData("### hello world", "<h3>hello world</h3>")]
         [InlineData(" ### hello world", " <h3>hello world</h3>")]
@@ -101,6 +109,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("## hello ## world", "<h2>hello</h2> world")]
         [InlineData("## hello world", "<h2>hello world</h2>")]
         [InlineData(" ## hello world", " <h2>hello world</h2>")]
@@ -112,6 +121,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("# hello # world", "<h1>hello</h1> world")]
         [InlineData("# hello world", "<h1>hello world</h1>")]
         [InlineData(" # hello world", " <h1>hello world</h1>")]
@@ -123,6 +133,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "unit")]
         [InlineData("`hello` world", "<code><pre>hello</pre></code> world")]
         [InlineData("`hello world`", "<code><pre>hello world</pre></code>")]
         [InlineData("hello `world`", "hello <code><pre>world</pre></code>")]
@@ -136,6 +147,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "integration")]
         [InlineData("**hello world")]
         [InlineData("hello _world")]
         public void Parse_UnmatchedTags(string inital)
@@ -148,6 +160,7 @@ namespace WikiLinks.Test.Unit
         }
 
         [Theory]
+        [Trait("Category", "integration")]
         [InlineData("")]
         [InlineData("  ")]
         [InlineData(null)]
