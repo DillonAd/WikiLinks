@@ -7,9 +7,10 @@ namespace WikiLinks.Test.Unit
     {
         [Theory]
         [Trait("Category", "unit")]
-        [InlineData("> hello", "<blockquote><pre>hello</pre></blockquote>")]
-        [InlineData("> hello\n> world", "<blockquote><pre>hello\nworld</pre></blockquote>")]
-        [InlineData("> hello\n> world\n> !", "<blockquote><pre>hello\nworld\n!</pre></blockquote>")]
+        [InlineData("> hello", "<blockquote><pre>hello</pre></blockquote>\n")]
+        [InlineData("> hello\n> world", "<blockquote><pre>hello\nworld</pre></blockquote>\n")]
+        [InlineData("> hello\n> world\n> !", "<blockquote><pre>hello\nworld\n!</pre></blockquote>\n")]
+        [InlineData("> hello\n> world\n> !\n", "<blockquote><pre>hello\nworld\n!</pre></blockquote>\n\n")]
         public void ParseBlockquote(string input, string expected)
         {
             //Assemble
