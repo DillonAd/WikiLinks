@@ -29,7 +29,7 @@ namespace WikiLinks.Test.Unit
             var result = bqr.Parse(input);
 
             //Assert
-            Assert.Equal(expected, result.Replace(Environment.NewLine, "\n"));
+            Assert.Equal(expected, result);
         }
     }
 }
