@@ -1,3 +1,4 @@
+using System;
 using WikiLinks.Domain.MarkdownRules;
 using Xunit;
 
@@ -20,7 +21,7 @@ namespace WikiLinks.Test.Unit
             var result = bqr.Parse(input);
 
             //Assert
-            Assert.Equal(expected, result);
+            Assert.Equal(expected.Replace("\n", Environment.NewLine), result);
         }
     }
 }
