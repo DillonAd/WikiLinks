@@ -50,7 +50,8 @@ namespace WikiLinks.Domain.MarkdownRules
 
                         if((i < lines.Length - 1 && !lines[i + 1].StartsWith(tag)) || i == lines.Length -1)
                         {
-                            result.AppendLine(HtmlEndTag);       
+                            result.Append(HtmlEndTag)
+                                  .Append(Environment.NewLine);       
                         }
                         else
                         {
