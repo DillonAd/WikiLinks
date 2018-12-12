@@ -21,7 +21,7 @@ namespace WikiLinks.Test.Unit
             var result = bqr.Parse(input);
 
             //Assert
-            Assert.Equal(expected.Replace("\n", Environment.NewLine), result);
+            Assert.Equal(expected, result.Replace(Environment.NewLine, "\n"));
         }
     }
 }
