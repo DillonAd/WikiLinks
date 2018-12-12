@@ -54,12 +54,13 @@ namespace WikiLinks.Domain.MarkdownRules
                         }
                         else
                         {
-                            result.AppendLine();
+                            result.Append(Environment.NewLine);
                         }
                     }
                     else
                     {
-                        result.AppendLine(lines[i]);
+                        result.Append(lines[i])
+                              .Append(Environment.NewLine);
                     }
                 }
             }
