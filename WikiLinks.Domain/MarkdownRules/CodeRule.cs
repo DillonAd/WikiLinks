@@ -1,6 +1,6 @@
 namespace WikiLinks.Domain.MarkdownRules
 {
-    public class CodeRule : MarkdownRule
+    public class CodeRule : SingleLineMarkdownRule
     {
         private const string _MarkdownTag = "`";
         private const string _HtmlBeginTag = "<code><pre>";
