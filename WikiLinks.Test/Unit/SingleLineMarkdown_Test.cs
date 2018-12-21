@@ -184,11 +184,11 @@ namespace WikiLinks.Test.Unit
 
         [Theory]
         [Trait("Category", "unit")]
-        [InlineData("`hello` world", "<code><pre>hello</pre></code> world")]
-        [InlineData("`hello world`", "<code><pre>hello world</pre></code>")]
-        [InlineData("hello `world`", "hello <code><pre>world</pre></code>")]
-        [InlineData("` hello ` world", "<code><pre> hello </pre></code> world")]
-        [InlineData("`hello ` world", "<code><pre>hello </pre></code> world")]
+        [InlineData("`hello` world", "<code>hello</code> world")]
+        [InlineData("`hello world`", "<code>hello world</code>")]
+        [InlineData("hello `world`", "hello <code>world</code>")]
+        [InlineData("` hello ` world", "<code> hello </code> world")]
+        [InlineData("`hello ` world", "<code>hello </code> world")]
         public void ParseCodeLine(string initial, string expected)
         {
             //Assemble
