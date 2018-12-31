@@ -35,10 +35,10 @@ namespace WikiLinks.Test.Unit
         public static IEnumerable<object[]> MultilineInput =>
             new []
             {
-                new object[] { "hello \n```\nworld\n```", "hello \n<pre><code>\nworld\n</code></pre>" },
-                new object[] { "```\nhello\nworld\n```", "<pre><code>\nhello\nworld\n</code></pre>" },
+                new object[] { $"hello {Environment.NewLine}```{Environment.NewLine}world{Environment.NewLine}```", $"hello {Environment.NewLine}<pre><code>{Environment.NewLine}world{Environment.NewLine}</code></pre>" },
+                new object[] { $"```{Environment.NewLine}hello{Environment.NewLine}world{Environment.NewLine}```", $"<pre><code>{Environment.NewLine}hello{Environment.NewLine}world{Environment.NewLine}</code></pre>" },
                 new object[] { "", "" },
-                new object[] { "\n\n", "\n\n" }
+                new object[] { $"{Environment.NewLine}{Environment.NewLine}", $"{Environment.NewLine}{Environment.NewLine}" }
             };
 
         [Theory]
