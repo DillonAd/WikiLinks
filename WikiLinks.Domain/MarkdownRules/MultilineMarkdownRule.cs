@@ -25,7 +25,7 @@ namespace WikiLinks.Domain.MarkdownRules
             RequireSpace = requireSpace;
         }
 
-        public string Parse(string input)
+        public virtual string Parse(string input)
         {
             var tag = MarkdownTag + (RequireSpace ? " " : "");
             var lines = input.Split(new[] { Environment.NewLine }, StringSplitOptions.None);

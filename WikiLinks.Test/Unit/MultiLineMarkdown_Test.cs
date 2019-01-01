@@ -31,5 +31,28 @@ namespace WikiLinks.Test.Unit
             //Assert
             Assert.Equal(expected, result);
         }
+
+        public static IEnumerable<object[]> MultilineInput =>
+            new []
+            {
+                new object[] { $"hello {Environment.NewLine}```{Environment.NewLine}world{Environment.NewLine}```", $"hello {Environment.NewLine}<pre><code>{Environment.NewLine}world{Environment.NewLine}</code></pre>" },
+                new object[] { $"```{Environment.NewLine}hello{Environment.NewLine}world{Environment.NewLine}```", $"<pre><code>{Environment.NewLine}hello{Environment.NewLine}world{Environment.NewLine}</code></pre>" },
+                new object[] { "", "" },
+                new object[] { $"{Environment.NewLine}{Environment.NewLine}", $"{Environment.NewLine}{Environment.NewLine}" }
+            };
+
+        [Theory]
+        [MemberData(nameof(MultilineInput))]
+        public void ParseCodeBlock(string input, string expected)   
+        {
+            //Assemble
+            var cbr = new CodeBlockRule();
+
+            //Act
+            var result = cbr.Parse(input);
+
+            //Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
